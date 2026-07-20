@@ -336,7 +336,8 @@
     justify-self:center;
   }
   .hero-visual .ring-frame img{
-    width:340px;height:430px;
+    width:min(340px, 62vw);
+    height:min(430px, 78vw);
   }
   .hero-visual::after{
     content:"";
@@ -364,8 +365,20 @@
 
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;text-align:left;}
-    .hero-visual{justify-self:start;margin-top:20px;}
+    .hero-visual{justify-self:center;margin:20px auto 0;}
     .hero-tag{left:0;}
+  }
+  @media (max-width:560px){
+    .hero{padding-top:100px;}
+    .hero .wrap{padding-bottom:56px;gap:36px;}
+    .hero-copy p.lead{max-width:100%;}
+    .hero-visual::after{inset:-24px;}
+    .hero-tag{
+      position:static;
+      margin-top:22px;
+      max-width:100%;
+      width:100%;
+    }
   }
 
   /* ---------- marquee strip ---------- */
@@ -555,11 +568,11 @@
   }
   @media(max-width:900px){.about .wrap{grid-template-columns:1fr;gap:50px;}}
 
-  .about-photo{justify-self:center;position:relative;}
-  .about-photo .ring-frame img{width:300px;height:300px;}
+  .about-photo{justify-self:center;position:relative;max-width:100%;}
+  .about-photo .ring-frame img{width:min(300px, 62vw);height:min(300px, 62vw);}
   .about-photo .sig{
     position:absolute;
-    top:-24px;right:-30px;
+    top:-24px;right:-10px;
     font-family:'Cormorant Garamond',serif;
     font-style:italic;
     font-size:1.1rem;
@@ -640,7 +653,10 @@
     color:var(--gold-soft);
     letter-spacing:0.03em;
   }
-  @media(max-width:760px){.space-item img{height:420px;}}
+  @media(max-width:760px){
+    .space-item img{height:340px;}
+    .space-item{border-radius:80px 80px 8px 8px;}
+  }
 
   /* ---------- contact ---------- */
   .contact{
@@ -803,6 +819,110 @@
     transition:opacity .9s ease, transform .9s ease;
   }
   .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ==================================================
+     MOBILE FIXES — global safety net + fine tuning
+     ================================================== */
+  html, body{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+  img, svg, iframe{max-width:100%;}
+  *{ -webkit-tap-highlight-color: transparent; }
+
+  @media (max-width:760px){
+    .wrap{padding:0 22px;}
+
+    .btn{
+      padding:13px 24px;
+      font-size:0.74rem;
+    }
+
+    /* nav */
+    header{padding:16px 0;}
+    header.scrolled{padding:12px 0;}
+    .brandmark .name{font-size:1.05rem;}
+    .burger{font-size:1.5rem;padding:4px;}
+
+    /* results section */
+    .results .wrap{gap:44px;}
+    .results-visual .ring-frame img{
+      width:min(320px, 78vw);
+      height:min(380px, 92vw);
+    }
+    .results-visual .caption{
+      right:0;
+      bottom:0;
+      padding:12px 16px;
+    }
+    .results-stats{gap:32px;}
+
+    /* about */
+    .about-copy p{max-width:100%;}
+
+    /* space gallery */
+    .space-item .label{padding:24px 20px 18px;}
+    .space-item .label b{font-size:1.25rem;}
+
+    /* contact */
+    .map-frame, .map-frame iframe{min-height:280px;}
+
+    /* footer */
+    footer .wrap{
+      flex-direction:column;
+      text-align:center;
+      justify-content:center;
+    }
+    footer .flinks{justify-content:center;}
+
+    /* floating whatsapp button */
+    .float-wa{
+      width:52px;height:52px;
+      right:16px;bottom:16px;
+    }
+    .float-wa svg{width:22px;height:22px;}
+
+    /* treatments CTA */
+    .treat-cta{padding:28px 22px;}
+    .treat-cta p{font-size:1.2rem;}
+  }
+
+  @media (max-width:480px){
+    .wrap{padding:0 18px;}
+
+    .hero-copy h1{font-size:2.1rem;}
+    .hero-copy p.lead{font-size:1rem;}
+    .hero-actions{gap:14px;}
+    .hero-actions .btn{width:100%;justify-content:center;}
+    .hero-meta div b{font-size:1.5rem;}
+
+    .strip span{font-size:1rem;padding:0 22px;}
+    .strip span::after{margin-left:22px;}
+
+    .section-head h2{font-size:1.7rem;}
+    .section-head p{font-size:0.92rem;}
+
+    .treat-card{padding:34px 24px;}
+    .treat-card h3{font-size:1.3rem;}
+
+    .about-photo .sig{
+      font-size:0.95rem;
+      padding:6px 12px;
+      top:-16px;right:-4px;
+    }
+
+    .space-item img{height:280px;}
+
+    .contact-info h2{font-size:1.9rem;}
+
+    .float-wa{right:12px;bottom:12px;}
+  }
+
+  @media (max-width:360px){
+    .hero-copy h1{font-size:1.85rem;}
+    .hero-tag{padding:14px 18px;}
+    .btn{padding:12px 20px;}
+  }
 </style>
 </head>
 <body>
